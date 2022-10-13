@@ -1,0 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
+Sitemap: http://24group.com.ng/sitemap.xml
+User-agent: *
+Disallow:

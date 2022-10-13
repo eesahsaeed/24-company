@@ -1,0 +1,23 @@
+.shared-text {
+  font-size: 27px !important;
+}
+.single-serv {
+  transition: all 0.5s ease-in-out !important;
+}
+.single-serv:hover {
+  background: #eeeff5 !important;
+  box-shadow: 0px 4px 7px rgba(150, 185, 252, 0.55) !important;
+  border-radius: 10px !important;
+}
+.shared-img {
+  transition: all 0.5s ease-in-out !important;
+}
+.single-serv:hover .shared-img {
+  transform: rotate(360deg) !important;
+}
+
+@media screen and (min-width: 768px) {
+  .shared-sub-text {
+    width: 95% !important;
+  }
+}

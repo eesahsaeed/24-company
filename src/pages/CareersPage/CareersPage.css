@@ -1,0 +1,128 @@
+.careers-wrapper {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../../assets/images/careeres.png");
+  background-repeat: no-repeat;
+
+  background-position: center;
+
+  max-width: 100vw;
+  min-height: 80vh;
+}
+.career-main-text {
+  color: #fff !important;
+}
+.career-sub-main {
+  background-color: #e5e5e5;
+}
+.more-jobs {
+  color: #fff !important;
+  align-items: center !important;
+  justify-content: flex-end;
+}
+
+.application-btn{
+  background-color: #0c1737 !important;
+  color: white !important;
+  border: 1px solid #fff;
+  font-size: 12px !important;
+}
+
+.application-lvl {
+  font-size: 8px !important;
+  color: gray !important;
+}
+
+.application-title{
+  color: gray !important;
+}
+
+.single-input {
+  background: transparent !important;
+  outline: none !important;
+  border-bottom: 0.5px solid #999;
+  padding-bottom: 5px;
+  color: #0c1737;
+  display: inline-block !important;
+  margin-bottom: 2.5rem;
+}
+.single-input:focus {
+  outline: none !important;
+}
+.file-cont {
+  background-color: #eee !important;
+}
+.file-cont {
+  border: 1px dashed #faaf40 !important;
+}
+.file {
+  background: transparent !important;
+  outline: none !important;
+  color: #00a7ff;
+  font-size: 12px !important;
+}
+.file:focus {
+  outline: none !important;
+}
+.file-text {
+  font-size: 12px;
+  color: #a4a5a8;
+}
+.file-btn {
+  color: #fff;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 550px) {
+  .careers-wrapper {
+    min-height: 65vh;
+  }
+  .career-main-text {
+    color: #fff !important;
+    font-size: 32px !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  .career-main-text {
+    color: #fff !important;
+    font-size: 27px !important;
+  }
+  .career-sub-main-text1 {
+    font-size: 27px !important;
+  }
+  .career-sub-main-text2 {
+    font-size: 25px !important;
+  }
+  .career-sub-main-text3 {
+    font-size: 12px !important;
+  }
+}
+@media screen and (max-width: 350px) {
+  .career-main-text {
+    color: #fff !important;
+    font-size: 23px !important;
+  }
+  .career-sub-main-text1 {
+    font-size: 23px !important;
+  }
+  .career-sub-main-text2 {
+    font-size: 20px !important;
+  }
+  .career-sub-main-text3 {
+    font-size: 11px !important;
+  }
+}
+@media screen and (max-width: 300px) {
+  .career-main-text {
+    color: #fff !important;
+    font-size: 18px !important;
+  }
+  .career-sub-main-text1 {
+    font-size: 17px !important;
+  }
+  .career-sub-main-text2 {
+    font-size: 15px !important;
+  }
+  .career-sub-main-text3 {
+    font-size: 10px !important;
+  }
+}

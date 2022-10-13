@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cerebri Regular', sans-serif !important;
+  /* overflow-x: hidden !important; */
+}
+.main-home-container {
+  width: 100% !important;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00a7ff;
+  border-radius: 30px;
+  min-height: 30px;
+  
+}
+
+@font-face {
+  font-family: 'Cerebri Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Cerebri Sans Medium'), url('./CerebriSans-Medium.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Cerebri Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cerebri Sans Regular'), url('./CerebriSans-Regular.ttf') format('truetype');
+    }

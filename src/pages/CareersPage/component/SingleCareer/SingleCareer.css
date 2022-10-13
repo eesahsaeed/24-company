@@ -1,0 +1,15 @@
+.single-career,
+.single-career-img {
+  transition: all 0.5s ease-in-out !important;
+}
+.single-career{
+  background: #eeeff5 !important;
+  box-shadow: 0px 4px 7px rgba(150, 185, 252, 0.55) !important;
+  border-radius: 10px !important;
+}
+.single-career:hover .single-career-img {
+  transform: rotate(360deg) !important;
+}
+.single-career-text {
+    font-size: 22px !important;
+}

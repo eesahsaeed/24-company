@@ -1,0 +1,27 @@
+.numeric,
+.job-title,
+.job-lvl {
+  color: #fff !important;
+}
+
+input{
+  width: 100%;
+}
+
+.job-btn {
+  color: #0c1737 !important;
+  border: 1px solid #fff;
+  background-color: #fff !important;
+  font-size: 12px !important;
+}
+
+.job-lvl {
+  font-size: 8px !important;
+}
+
+@media screen and (max-width: 500px) {
+  .job-lvl {
+    display: block;
+    margin-left: 1.4rem;
+  }
+}

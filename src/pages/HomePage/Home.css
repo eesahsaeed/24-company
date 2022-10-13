@@ -1,0 +1,444 @@
+.slick-slide {
+  height: 200px !important;
+}
+
+.slick-slide img {
+  height: 200px !important;
+  width: 300px !important;
+}
+.our_work_cards__wrapper{
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px auto;
+  padding-bottom: 14em;
+
+}
+.paragraph{
+  width: 50%;
+}
+.main-wrapper {
+  /* background-image: url("../../assets/images/bg-left.png"); */
+  background-repeat: no-repeat;
+  background-color: #0b1930;
+  /* background-position: right; */
+  min-height: 100vh;
+  /* min-height: 69vh; */
+  width: 100%;
+}
+.main-text {
+  color: white;
+
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 600;
+  /* line-height: 80px; */
+  letter-spacing: 0em;
+  text-align: left;
+  width: 90%;
+}
+.sub-main-text3 {
+  color: white;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 300;
+  /* line-height: 23px; */
+  letter-spacing: 0em;
+  text-align: left;
+  width: 95%;
+  margin-top: 2rem;
+}
+.home-btn {
+  display: block;
+  width: 200px;
+  height: 50px;
+  outline: none !important;
+  cursor: pointer !important;
+  color: #fff;
+  border-radius: 6px !important;
+  border: 1px solid #2f58ff !important;
+  margin-top: 3rem;
+  justify-content: center !important;
+  align-items: center !important;
+  transition: all 0.3s ease-in-out;
+  background-color: #2f58ff;
+}
+.col2{
+  align-self: flex-end;
+  justify-content: flex-end
+}
+.home-side-img-cont {
+  width: 500px;
+  height: 500px;
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+.home-btn:focus {
+  outline: none !important;
+}
+.home-btn:hover {
+  background-color: #01a1f7;
+  color: white;
+}
+.single-icon {
+  color: white !important;
+  cursor: pointer;
+  font-size: 1.1rem !important;
+  transition: all.3s ease-in-out;
+}
+.single-icon:hover {
+  color: #01a1f7 !important;
+  transform: translateY(-12px);
+}
+.other-service-btn {
+  align-self: center;
+  align-items: center !important;
+  justify-content: center;
+}
+.home-slider-cont {
+  align-items: center !important;
+  justify-content: center;
+}
+.slider-cont {
+  width: 100%;
+  height: 740px;
+  background-image: url("../../assets/images/frame-slider 1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.caro-slider {
+  width: 100%;
+  align-self: center;
+  height: 200px;
+  /* padding-top: 30px; */
+}
+.text3 {
+  color: #4f4f4f;
+}
+.text2 {
+  color: #1d1d1f;
+}
+/* .home-icon {
+  font-size: 2rem !important;
+} */
+.sub-main {
+  /* min-height: 42vh; */
+  /* min-height: 41vh; */
+  justify-content: center !important;
+  align-items: center !important;
+}
+.sub-main-cont {
+  width: 100%;
+  background-color: #e3ecee;
+  height: 19rem;
+}
+.bulb-img-cont {
+  height: 19rem !important;
+  width: 80%;
+}
+.sub-main-cont-text {
+  color: #0c1737;
+  font-size: 38px;
+}
+.sub-main-cont-text1 {
+  color: #0c1737;
+  font-size: 20px;
+  width: 90%;
+  margin-top: 5px;
+}
+
+/* HOEVER VIEW */
+.single-hover-cont:hover .hover-effect {
+  opacity: 1;
+  transform: scale(1);
+}
+.hover-effect {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* PASSION SECTION */
+.passion-section {
+  background-image: url("../../assets/images/left bg.png");
+  background-position: left !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.passion-btn {
+  color: white;
+  flex-direction: row;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.passion-btn:focus {
+  outline: none !important;
+}
+.clients-view {
+  background-color: #f4f6ff;
+}
+
+.phone-view {
+  background-image: url("../../assets/images/celullar.png");
+  background-position: center !important;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #f4f6ff;
+  min-height: 60vh;
+}
+.phone-padding-view {
+  background-color: #f4f6ff;
+}
+
+@media screen and (min-width: 1400px) {
+  .phone-text-cont {
+    width: 100% !important;
+    padding-top: 12rem !important;
+    padding-left: 6rem !important;
+  }
+  .phone-big-text {
+    font-size: 7rem !important;
+  }
+  .phone-small-text {
+    font-size: 2.5rem !important;
+    margin-top: 45px !important;
+  }
+  .phone-btn {
+    width: 13.5rem !important;
+    height: 3.5rem !important;
+    font-size: 20px !important;
+    margin-top: 60px !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  /* .sub-main-cont-1{
+margin-left: -2rem;
+} */
+  .home-side-img-cont {
+    width: 400px;
+    height: 400px;
+  }
+
+  .sub-main-cont-text {
+    font-size: 28px;
+  }
+  .sub-main-cont-text1 {
+    font-size: 17px;
+    width: 95%;
+  }
+  .bulb-img-cont {
+    height: 19rem !important;
+    width: 100%;
+  }
+  .main-text {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .main-text {
+    font-size: 56px;
+    font-style: normal;
+    width: 70%;
+  }
+  .home-side-img-cont {
+    display: none;
+  }
+  .slider-cont {
+    width: 100%;
+    height: 700px;
+  }
+  .sub-main-text3 {
+    width: 80%;
+  }
+  .sub-main-cont-text {
+    color: #0c1737;
+    font-size: 32px;
+  }
+  .bulb-img-cont {
+    width: 0%;
+  }
+  .sub-main-cont-1 {
+    padding-left: 2rem;
+    padding-top: 3rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  .paragraph{
+    width: 100% !important;
+  }
+  .main-text {
+    font-size: 45px;
+    font-style: normal;
+    width: 90%;
+  }
+  .sub-main-text1 {
+    font-size: 14px;
+  }
+  .sub-main-text2 {
+    font-size: 14px;
+  }
+  .sub-main-text3 {
+    width: 90%;
+    font-size: 14px;
+  }
+  .sub-main-cont-1 {
+    padding-left: 1.5rem;
+    padding-top: 3rem;
+  }
+  .sub-main-cont-text {
+    font-size: 18px !important;
+  }
+  .sub-main-cont-text1 {
+    font-size: 13px !important;
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .our_work_cards__wrapper{
+    flex-direction: column;
+  }
+  .sub-main-text1,
+  .sub-main-text2 {
+    font-size: 13px;
+    /* width: 80%; */
+  }
+  .sub-main-cont-1 {
+    padding-left: 1rem;
+    padding-top: 3rem;
+  }
+  .sub-main-cont-text {
+    font-size: 15px !important;
+  }
+  .sub-main-cont-text1 {
+    font-size: 11px !important;
+    width: 100%;
+    margin-top: 15px;
+  }
+  .sub-main-cont {
+    height: 17rem;
+  }
+  .phone-small-text {
+    font-size: 11px !important;
+  }
+  .phone-btn {
+    font-size: 10px !important;
+  }
+  .passion-btn {
+    font-size: 13px !important;
+  }
+  .phone-big-text {
+    font-size: 30px !important;
+  }
+}
+@media screen and (max-width: 380px) {
+  .sub-main-text1,
+  .sub-main-text2 {
+    font-size: 12px;
+    width: 80%;
+  }
+  .main-text {
+    font-size: 40px;
+    font-style: normal;
+    width: 90%;
+  }
+  .sub-main-cont-text {
+    font-size: 12px !important;
+  }
+  .sub-main-cont-text1 {
+    font-size: 10px !important;
+    width: 100%;
+    margin-top: 15px;
+  }
+  .sub-main-cont {
+    height: 16rem;
+  }
+  .passion-text {
+    font-size: 42px !important;
+  }
+  .phone-small-text {
+    font-size: 9px !important;
+  }
+  .phone-text-cont {
+    padding-top: 6.4rem !important;
+    padding-left: 2rem !important;
+  }
+}
+@media screen and (max-width: 330px) {
+  .phone-big-text {
+    font-size: 20px !important;
+    margin-top: -5px !important;
+  }
+  .phone-text-cont {
+    padding-top: 7rem !important;
+    padding-left: 1.5rem !important;
+  }
+  .phone-small-text {
+    font-size: 8px !important;
+  }
+  .phone-btn {
+    width: 100px !important;
+    height: 20px !important;
+    font-size: 9px !important;
+  }
+}
+@media screen and (max-width: 300px) {
+  .sub-main-text1,
+  .sub-main-text2 {
+    font-size: 10px;
+    /* width: 80%; */
+  }
+  .main-text {
+    font-size: 35px;
+    font-style: normal;
+    width: 90%;
+  }
+  .sub-main-text3 {
+    width: 90%;
+    font-size: 12px;
+  }
+  .home-btn {
+    width: 220px;
+  }
+  .sub-main-cont-text {
+    font-size: 13px;
+  }
+  .sub-main-cont-text1 {
+    font-size: 13px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  .sub-main-cont {
+    height: 16rem;
+  }
+  .know-text {
+    font-size: 14px !important;
+  }
+  .see-text {
+    font-size: 10px;
+  }
+  .passion-text {
+    font-size: 38px !important;
+  }
+  .phone-big-text {
+    font-size: 18px !important;
+    margin-top: -5px !important;
+  }
+  .phone-text-cont {
+    padding-top: 7.5rem !important;
+    padding-left: 1.5rem !important;
+  }
+  .phone-small-text {
+    font-size: 7px !important;
+  }
+  .phone-btn {
+    width: 80px !important;
+    height: 18px !important;
+    font-size: 7px !important;
+    margin-top: 8px !important;
+  }
+}

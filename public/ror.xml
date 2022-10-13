@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:ror="http://rorweb.com/0.1/" >
+<channel>
+  <title>ROR Sitemap for http://24group.com.ng/</title>
+  <link>http://24group.com.ng/</link>
+
+<item>
+     <link>http://24group.com.ng/</link>
+     <title>24 Design Company</title>
+     <description>24 Design Company brings your 
+tech ideas to life,with our outstanding team nothing is impossible.Our focus is the agile development of web, cloud, and mobile applications – 
+and helping organizations create and sustain digital innovation. </description>
+     <ror:updatePeriod></ror:updatePeriod>
+     <ror:sortOrder>0</ror:sortOrder>
+     <ror:resourceOf>sitemap</ror:resourceOf>
+</item>
+</channel>
+</rss>
+  

@@ -1,0 +1,11 @@
+@media only screen and (max-width: 600px) {
+    .carouselItem {
+        height: 100px !important;
+        width: 200px;
+    }
+
+    .slick-slide {
+        width: 240px !important;
+        height: 200px;
+    }
+}
