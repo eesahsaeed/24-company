@@ -36,6 +36,20 @@
   color: gray !important;
 }
 
+.error-msg{
+  color: red !important;
+  position: absolute;
+  top: 45px;
+}
+
+.file-error{
+  top: 70px;
+}
+
+.input-container{
+  position: relative;
+}
+
 .single-input {
   background: transparent !important;
   outline: none !important;

@@ -12,8 +12,17 @@ import { Helmet } from "react-helmet";
 const CareersPage = () => {
   const [values, setValues] = useState({
     jobTitle: "",
-    level: ""
+    level: "",
+    applicantFullName: "",
+    applicantPhoneNumber: "",
+    applicantCurriculumVitae: null
   });
+  const [applicantFullNameError, setApplicantFullNameError] = useState(true);
+  const [applicantFullNameErrorMessage, setApplicantFullNameErrorMessage] = useState("This is an error");
+  const [applicantPhoneNumberError, setApplicantPhoneNumberError] = useState(false);
+  const [applicantPhoneNumberErrorMessage, setApplicantPhoneNumberErrorMessage] = useState("");
+  const [applicantCVError, setApplicantCVError] = useState(false);
+  const [applicantCVErrorMessage, setApplicantCVErrorMessage] = useState("");
 
   const careerView = careerData.map((item) => (
     <SingleCareer {...item} key={item.id} />
@@ -22,6 +31,64 @@ const CareersPage = () => {
   const jobView = jobs.map((item, index) => (
     <SingleJob {...item} setValues={setValues} key={item.id} index={index} />
   ));
+
+  function handleChange(e){
+    e.preventDefault();
+
+    let name = e.target.name;
+    if (name === "applicationCurriculumVitae"){
+      setValues({...values, [name]: e.target.files[0]});
+      let size = e.target.files[0].size / 1000000;
+      
+      if (size < 3.2){
+        setApplicantCVError(false);
+        setApplicantCVErrorMessage("");
+      } else {
+        setApplicantCVError(true);
+        setApplicantCVErrorMessage("File too large");
+      }
+    } else {
+      setValues({...values, [name]: e.target.value});
+    }
+  }
+
+  function validate(){
+    let valid = true;
+
+    if (!values.applicantFullName){
+      setApplicantFullNameError(true);
+      setApplicantFullNameErrorMessage("Please Enter first and last name");
+      valid = false;
+    }
+
+    if (!values.applicantPhoneNumber){
+      setApplicantPhoneNumberError(true);
+      setApplicantPhoneNumberErrorMessage("Please enter a valid Phone Number");
+      valid = false;
+    }
+
+    if (!values.applicantCurriculumVitae){
+      setApplicantCVError(true);
+      setApplicantCVErrorMessage("Please upload a CV not more than 3mb");
+      valid = false;
+    }
+
+    if (values.applicantCurriculumVitae){
+      let size = values.applicantCurriculumVitae.size / 1000000;
+
+      if (size < 3.2){
+        setApplicantCVError(false);
+        setApplicantCVErrorMessage("");
+        valid = true;   
+      } else {
+        setApplicantCVError(true);
+        setApplicantCVErrorMessage("File too large");
+        valid = false;
+      }
+    }
+
+    return valid;
+  }
 
   return (
     <motion.div
@@ -111,52 +178,70 @@ const CareersPage = () => {
                   <div>
                     <button className="passion-btn flex animate-bounce outline-none md:w-32 md:h-7 border rounded-3xl  w-20 h-6 application-btn" onClick={() => {
                       let origin = document.location.origin;
-                      document.location.href = `${origin}/careers/#applicationSection`;
+                      document.location.href = `${origin}/careers/#openPositions`;
+                      let picElem = document.querySelector("input[type=file]");
+                      picElem.value = "";
+                      setValues({});
                     }}>
-                      Apply
+                      X
                     </button>
                   </div>
                 </div>
               </div>}
-              <div>
+              <div className="input-container">
                 <input
                   type="text"
-                  name="name"
-                  placeholder="Name:"
+                  name="applicantFullName"
+                  placeholder="Full Name:"
                   className="single-input mr-5"
+                  onChange={handleChange}
+                  style={{borderColor: applicantFullNameError ? "red" : "#999"}}
                 />
+                {applicantFullNameError && <p className="error-msg">{applicantFullNameErrorMessage}</p>}
               </div>
-              <div>
+              <div className="input-container">
                 <input
                   type="number"
-                  name="number"
+                  name="applicantPhoneNumber"
                   placeholder="Phone Number:"
                   className="single-input"
+                  onChange={handleChange}
+                  style={{borderColor: applicantFullNameError ? "red" : "#999"}}
                 />
+                {applicantFullNameError && <p className="error-msg">{applicantFullNameErrorMessage}</p>}
               </div>
-              <div>
+              <div className="input-container">
                 <input
                   type="text"
-                  name="comment"
+                  name="applicantComment"
                   multiple={true}
                   placeholder="Comments:"
                   className="single-input"
+                  onChange={handleChange}
+                  style={{borderColor: applicantFullNameError ? "red" : "#999"}}
                 />
+                {applicantFullNameError && <p className="error-msg">{applicantFullNameErrorMessage}</p>}
               </div>
             </form>
           </div>
           {/* COL2 */}
           <div className="w-full mx-auto">
-            <div className="file-cont mx-auto w-64 h-44 p-5">
-              <input type="file" name="file" className="file" />
+            <div className="file-cont mx-auto w-64 h-44 p-5 input-container">
+              <input 
+                type="file" 
+                name="applicationCurriculumVitae" 
+                className="file" 
+                onChange={handleChange}
+                style={{borderColor: applicantFullNameError ? "red" : "#999"}}
+              />
+              {applicantFullNameError && <p className="error-msg file-error">{applicantFullNameErrorMessage}</p>}
               <p className="font-light file-text mt-10">
-                File size limit: 3mb. The following formats are supported: doc,
-                docx, pdf, ppt,pptx
+                File size limit: 3mb. The following formats are supported: doc, docx, pdf, ppt, pptx
               </p>
             </div>
           </div>
         </div>
-        <button className="passion-btn file-btn flex animate-bounce outline-none w-40 h-9  mt-12 border rounded-3xl border-secodary-main bg-secodary-main ">
+        <button className="passion-btn file-btn flex animate-bounce outline-none w-40 h-9  mt-12 border rounded-3xl border-secodary-main bg-secodary-main">
           Submit
         </button>
       </section>
