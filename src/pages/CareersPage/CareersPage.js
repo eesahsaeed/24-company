@@ -1,13 +1,22 @@
 
 import React, {useState} from "react";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import "./CareersPage.css";
 import SingleCareer from "./component/SingleCareer/SingleCareer";
-import { careerData, jobs } from "../../data";
+import {careerData, jobs} from "../../data";
 import SingleJob from "./component/SingleJob/SingleJob";
-import { NavLink } from "react-router-dom";
-import { FaAngleRight } from "react-icons/fa";
-import { Helmet } from "react-helmet";
+import {NavLink} from "react-router-dom";
+import {FaAngleRight} from "react-icons/fa";
+import {Helmet} from "react-helmet";
+import {PuffLoader} from "react-spinners";
+
+import {getUrl} from "../../helper/urlHelper";
+
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+}
 
 const CareersPage = () => {
   const [values, setValues] = useState({
@@ -15,14 +24,18 @@ const CareersPage = () => {
     level: "",
     applicantFullName: "",
     applicantPhoneNumber: "",
+    applicantComment: "",    
     applicantCurriculumVitae: null
   });
-  const [applicantFullNameError, setApplicantFullNameError] = useState(true);
+  const [applicantFullNameError, setApplicantFullNameError] = useState(false);
   const [applicantFullNameErrorMessage, setApplicantFullNameErrorMessage] = useState("This is an error");
   const [applicantPhoneNumberError, setApplicantPhoneNumberError] = useState(false);
   const [applicantPhoneNumberErrorMessage, setApplicantPhoneNumberErrorMessage] = useState("");
   const [applicantCVError, setApplicantCVError] = useState(false);
   const [applicantCVErrorMessage, setApplicantCVErrorMessage] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const [color, setColor] = useState("#0c1737");
 
   const careerView = careerData.map((item) => (
     <SingleCareer {...item} key={item.id} />
@@ -36,7 +49,23 @@ const CareersPage = () => {
     e.preventDefault();
 
     let name = e.target.name;
-    if (name === "applicationCurriculumVitae"){
+
+    if (name === "applicantFullName"){
+      setApplicantFullNameError(false);
+      setApplicantFullNameErrorMessage("");
+    }
+
+    if (name === "applicantPhoneNumber"){
+      setApplicantPhoneNumberError(false);
+      setApplicantPhoneNumberErrorMessage("");
+    }
+
+    if (name === "applicantCurriculumVitae"){
+      setApplicantCVError(false);
+      setApplicantCVErrorMessage("");
+    }
+
+    if (name === "applicantCurriculumVitae"){
       setValues({...values, [name]: e.target.files[0]});
       let size = e.target.files[0].size / 1000000;
       
@@ -90,13 +119,61 @@ const CareersPage = () => {
     return valid;
   }
 
+  function handleSubmit(){
+    setLoading(true);
+    
+    let applicantData = new FormData();
+    values.jobTitle && applicantData.append("jobTitle", values.jobTitle);
+    values.level && applicantData.append("level", values.level);
+    values.applicantFullName && applicantData.append("applicantFullName", values.applicantFullName);
+    values.applicantPhoneNumber && applicantData.append("applicantPhoneNumber", values.applicantPhoneNumber);
+    values.applicantComment && applicantData.append("applicantComment", values.applicantComment);
+    values.applicantCurriculumVitae && applicantData.append("applicantCurriculumVitae", values.applicantCurriculumVitae);
+
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    async function apply(application){
+      try{
+        let response = await fetch(`${getUrl()}/applications/upload`, {
+          method: "POST",
+          headers: {
+            "Accept": "application/json"
+          },
+          body: application
+        })
+
+        return await response.json();
+      } catch(err){
+        console.log(err);
+      }
+    }
+
+    apply(applicantData).then(data => {
+      if (data.success){
+        let origin = document.location.origin;
+        document.location.href = `${origin}/careers/#openPositions`;
+        let picElem = document.querySelector("input[type=file]");
+        picElem.value = "";
+        setLoading(false);
+        setValues({});
+      }
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  function clearFields(){
+
+  }
+
   return (
     <motion.div
       className="container main-home-container relative"
-      exit={{ opacity: 0 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      exit={{opacity: 0}}
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{duration: 0.5}}
     >
       <Helmet>
         <meta charSet="utf-8" />
@@ -122,7 +199,6 @@ const CareersPage = () => {
             Connect with the best in our team!
           </h6>
           <div className=" w-full h-full grid lg:grid-cols-2">
-            {/* COL1 */}
             <div className="lg:mt-52">
               <h6 className="font-bold career-sub-main-text2 md:text-4xl text-3xl text-primary-main mb-8">
                 Your life at
@@ -166,7 +242,20 @@ const CareersPage = () => {
         <div className="w-full h-full grid lg:grid-cols-3 md:mt-20 mt-14">
           {/* COL1 */}
           <div className="lg:col-span-2 grid lg:grid-cols-2">
-            <form className="lg:col-span-2 grid lg:grid-cols-2">
+            <form className="lg:col-span-2 grid lg:grid-cols-2" style={{position: "relative"}}>
+              {loading && <div className="loading-container">
+                <PuffLoader
+                  color={color}
+                  loading={loading}
+                  cssOverride={override}
+                  size={150}
+                  aria-label="Loading Spinner"
+                  data-testid="loader"
+                />
+              </div>}
+              {!values.jobTitle && <div className="loading-container">
+                SELECT A JOB TO APPLY
+              </div>}
               {values.jobTitle && <div>
                 <div className="w-full mb-10 border-primary-light border-b flex flex-row justify-between align-middle" style={{paddingBottom: 11, borderColor: "#999"}}>
                   <div className="">
@@ -206,9 +295,9 @@ const CareersPage = () => {
                   placeholder="Phone Number:"
                   className="single-input"
                   onChange={handleChange}
-                  style={{borderColor: applicantFullNameError ? "red" : "#999"}}
+                  style={{borderColor: applicantPhoneNumberError ? "red" : "#999"}}
                 />
-                {applicantFullNameError && <p className="error-msg">{applicantFullNameErrorMessage}</p>}
+                {applicantPhoneNumberError && <p className="error-msg">{applicantPhoneNumberErrorMessage}</p>}
               </div>
               <div className="input-container">
                 <input
@@ -218,9 +307,7 @@ const CareersPage = () => {
                   placeholder="Comments:"
                   className="single-input"
                   onChange={handleChange}
-                  style={{borderColor: applicantFullNameError ? "red" : "#999"}}
                 />
-                {applicantFullNameError && <p className="error-msg">{applicantFullNameErrorMessage}</p>}
               </div>
             </form>
           </div>
@@ -229,19 +316,19 @@ const CareersPage = () => {
             <div className="file-cont mx-auto w-64 h-44 p-5 input-container">
               <input 
                 type="file" 
-                name="applicationCurriculumVitae" 
+                name="applicantCurriculumVitae" 
                 className="file" 
                 onChange={handleChange}
-                style={{borderColor: applicantFullNameError ? "red" : "#999"}}
+                style={{borderColor: applicantCVError ? "red" : "#999"}}
               />
-              {applicantFullNameError && <p className="error-msg file-error">{applicantFullNameErrorMessage}</p>}
+              {applicantCVError && <p className="error-msg file-error">{applicantCVErrorMessage}</p>}
               <p className="font-light file-text mt-10">
                 File size limit: 3mb. The following formats are supported: doc, docx, pdf, ppt, pptx
               </p>
             </div>
           </div>
         </div>
-        <button className="passion-btn file-btn flex animate-bounce outline-none w-40 h-9  mt-12 border rounded-3xl border-secodary-main bg-secodary-main">
+        <button className="passion-btn file-btn flex animate-bounce outline-none w-40 h-9  mt-12 border rounded-3xl border-secodary-main bg-secodary-main" onClick={handleSubmit}>
           Submit
         </button>
       </section>
