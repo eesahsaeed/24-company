@@ -10,8 +10,12 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 
-const Footer2 = () => {
+const Footer2 = ({headerFooter}) => {
   const year = new Date().getFullYear();
+  
+  if (headerFooter){
+    return "";
+  }
 
   return (
     <MainFooter className="text-white mt-24 text-sm pt-10">

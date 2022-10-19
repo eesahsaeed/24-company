@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
-import { NavLink, useHistory, Link } from "react-router-dom";
+import { NavLink, useLocation, Link } from "react-router-dom";
 import { FaBars, FaTimes, FaApple, FaAndroid, FaGlobe, FaClone, FaLayerGroup } from "react-icons/fa";
 import { RiFlutterFill, RiSettings3Fill, RiComputerFill } from "react-icons/ri";
 import { AiOutlineFileSearch } from "react-icons/ai";
-
-
 
 import Logo from "../../assets/images/newLogoWhite.png";
 import Logo1 from "../../assets/images/newLogoDark.png";
 
 
-function Navbar() {
-  const history = useHistory();
-  const {
-    location: { pathname: routeName },
-  } = history;
+function Navbar({headerFooter}) {
+  //const history = useHistory();
+  const { pathname: routeName } = useLocation();
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -68,6 +64,11 @@ function Navbar() {
     }
   };
   window.addEventListener("scroll", changeNavBarBackground);
+
+  if (headerFooter){
+    return "";
+  }
+
   return (
     // <IconContext.Provider value={{ color: "#fff" }}>
 

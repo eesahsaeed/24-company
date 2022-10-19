@@ -3,6 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.admin-icon{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.admin-link{
+  vertical-align: 6px;
+}
+
+.table-responsive{
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+}
+
 
 
 

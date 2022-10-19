@@ -1,10 +1,10 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Image2 from "../../assets/images/right-arrow.svg";
 
 const SingleAbout = (props) => {
-  const history = useHistory()
+  const navigate = useNavigate()
   return (
     <>
       {props.reversed ? (
@@ -39,7 +39,7 @@ const SingleAbout = (props) => {
             {props.showBtn && (
               
                 
-                <button onClick={() => history.push('/contact')} className="flex flex-row single-btn outline-none focus:outline-none rounded-md capitalize mt-5">
+                <button onClick={() => navigate('/contact')} className="flex flex-row single-btn outline-none focus:outline-none rounded-md capitalize mt-5">
                   Get started
                   <img src={Image2} alt="" className="block single-img ml-5" />
                 </button>
@@ -99,7 +99,7 @@ const SingleAbout = (props) => {
               {props.text5}
             </p>
             {props.showBtn && (
-              <button onClick={() => history.push('/contact')} className="flex flex-row single-btn outline-none focus:outline-none rounded-md capitalize mt-2">
+              <button onClick={() => navigate('/contact')} className="flex flex-row single-btn outline-none focus:outline-none rounded-md capitalize mt-2">
                 Get started
                 <img src={Image2} alt="" className="block single-img ml-5" />
               </button>

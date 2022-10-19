@@ -6,6 +6,7 @@ import { workData } from "./work";
 
 const WorkDetails = (props) => {
   const data = workData.find((v) => v.slug === props.match.params.slug);
+  
   return (
     <>
       <Helmet>

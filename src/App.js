@@ -1,6 +1,6 @@
 import "aos/dist/aos.css";
-import React from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import React, {useState} from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import "./App.css";
 import AOS from "aos";
@@ -24,38 +24,47 @@ import Portfolio from "./pages/Portfolio";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import WorkDetails from "./pages/WorkDetails/WorkDetails";
+import Admin from "./pages/Dashboard";
+import Applications from "./pages/Dashboard/views/Applications";
+import Dashboard from "./pages/Dashboard/views/Dashboard";
 
 function App() {
   AOS.init({
     easing: "ease-in-out",
   });
   const location = useLocation();
+  const [headerFooter, setHeaderFooter] = useState(false);
+
   return (
     <>
-      <Navbar />
+      <Navbar headerFooter={headerFooter}/>
       <AnimatePresence exitBeforeEnter>
-        <Switch location={location} key={location.key}>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/project-development" component={ProjectDevelopment} />
-          <Route path="/web-development" component={WebDevPage} />
-          <Route path="/careers" component={CareersPage} />
-          <Route path="/blog" component={BlogPage} />
-          <Route path="/mobile-development" component={MobileDevelopment} />
-          <Route path="/ui-development" component={UIDevelopment} />
-          <Route path="/QA-testing" component={QAPage} />
-          <Route path="/portfolio" component={Portfolio} />
-          <Route path="/terms" component={Terms} />
-          <Route path="/privacy" component={Privacy} />
-          <Route path="/:slug" component={WorkDetails} />
+        <Routes location={location} key={location.key}>
+          <Route path="/" exact element={<HomePage/>} />
+          <Route path="/about" element={<AboutPage/>} />
+          <Route path="/contact" element={<Contact/>} />
+          <Route path="/project-development" element={<ProjectDevelopment/>} />
+          <Route path="/web-development" element={<WebDevPage/>} />
+          <Route path="/careers" element={<CareersPage/>} />
+          <Route path="/blog" element={<BlogPage/>} />
+          <Route path="/mobile-development" element={<MobileDevelopment/>} />
+          <Route path="/ui-development" element={<UIDevelopment/>} />
+          <Route path="/QA-testing" element={<QAPage/>} />
+          <Route path="/portfolio" element={<Portfolio/>} />
+          <Route path="/terms" element={<Terms/>} />
+          <Route path="/privacy" element={<Privacy/>} />
+          <Route path="/:slug" element={<WorkDetails/>} />
+          <Route path="/admin" element={<Admin setHeaderFooter={setHeaderFooter}/>}>
+            <Route path="applications" element={<Applications/>}/>
+            <Route path="dashboard" element={<Dashboard/>}/>
+          </Route>
           <Route
             path="/digital-transformation"
-            component={DigitalTransformation}
+            element={<DigitalTransformation/>}
           />
-        </Switch>
+        </Routes>
       </AnimatePresence>
-      <Footer />
+      <Footer headerFooter={headerFooter}/>
     </>
   );
 }
