@@ -60,13 +60,12 @@ function Dashboard(props) {
         bgColor={backgroundColor}
         activeColor={activeColor}
       />
-      <div className="main-panel" ref={mainPanel}>
-        <DemoNavbar {...props} />
+      <DemoNavbar {...props}/>
+      <div className="main-panel" ref={mainPanel} style={{marginTop: -50}}>
         {location.pathname === "/admin" && <div style={{marginTop: 100}}>
          Welcome admin
         </div>}
         <Outlet/>
-        <Footer fluid />
       </div>
       {/**<FixedPlugin
         bgColor={backgroundColor}

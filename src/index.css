@@ -17,6 +17,10 @@
   overflow-x: hidden !important;
 }
 
-
+.download-btn{
+  color: #00a7ff;
+  text-decoration: underline;
+  outline: none;
+}
 
 

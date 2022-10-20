@@ -57,7 +57,7 @@ function App() {
           <Route path="/admin" element={<Admin setHeaderFooter={setHeaderFooter}/>}>
             <Route path="applications" element={<Applications/>}/>
             <Route path="dashboard" element={<Dashboard/>}/>
-          </Route>
+          </Route> 
           <Route
             path="/digital-transformation"
             element={<DigitalTransformation/>}

@@ -125,23 +125,6 @@ function Header(props) {
           </div>
           <NavbarBrand href="/">{getBrand()}</NavbarBrand>
         </div>
-        <NavbarToggler onClick={toggle}>
-          <span className="navbar-toggler-bar navbar-kebab" />
-          <span className="navbar-toggler-bar navbar-kebab" />
-          <span className="navbar-toggler-bar navbar-kebab" />
-        </NavbarToggler>
-        <Collapse isOpen={isOpen} navbar className="justify-content-end">
-          <form>
-            <InputGroup className="no-border">
-              <Input placeholder="Search..." />
-              <InputGroupAddon addonType="append" style={{cursor: "pointer"}}>
-                <InputGroupText>
-                  <BiSearchAlt size={20} className="ms-2"/>
-                </InputGroupText>
-              </InputGroupAddon>
-            </InputGroup>
-          </form>
-        </Collapse>
       </Container>
     </Navbar>
   );
